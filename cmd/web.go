@@ -16,7 +16,7 @@ func runWeb(ctx *cli.Context) {
 	m := macaron.New()
 	m.Use(macaron.Logger())
 	m.Use(macaron.Recovery())
-	m.Use(macaron.Static("public", macaron.StaticOptions{
+	m.Use(macaron.Static("static", macaron.StaticOptions{
 		SkipLogging: true,
 	}))
 	//m.Use(i18n.I18n())
