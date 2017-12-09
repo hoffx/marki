@@ -2,8 +2,7 @@ package storage
 
 import "io"
 
-type Revision interface {
-}
+type Revision string
 
 type Storage interface {
 	Root(revision Revision) Topic
