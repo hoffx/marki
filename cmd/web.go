@@ -20,6 +20,9 @@ func runWeb(ctx *cli.Context) {
 		SkipLogging: true,
 	}))
 	//m.Use(i18n.I18n())
+	m.Use(macaron.Renderer(macaron.RenderOptions{
+		Directory: "templates",
+	}))
 	m.Get("/", routes.Home)
 	m.Get("/*", routes.Doc)
 	m.Run()
