@@ -1,10 +1,12 @@
 package routes
 
 import (
+	"html/template"
 	"io/ioutil"
 	"log"
 	"strings"
 
+	"github.com/hoffx/marki/parser"
 	"github.com/hoffx/marki/storage"
 	"github.com/hoffx/marki/ui"
 	macaron "gopkg.in/macaron.v1"
@@ -42,6 +44,7 @@ func Doc(ctx *macaron.Context, log *log.Logger, ui *ui.UI) {
 	ctx.Data["Name"] = toc.Name
 	data, _ := t.Data(toc.Lang)
 	d, _ := ioutil.ReadAll(data)
-	ctx.Data["Data"] = string(d)
+
+	ctx.Data["Data"] = template.HTML(parser.Parse(d))
 	ctx.HTML(200, "doc")
 }
