@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{.i18n.Tr "home"}} | {{.i18n.Tr "service"}}</title>
+    <link rel="stylesheet" type="text/css" href="/style/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/home.css"/>
 </head>
 <body>
-    <ul>
-        {{range .Topics}}
-            <li>{{.Name}}</li>
-        {{end}}
-    </ul>
+    <div id="header">
+        <h1>{{.Name}}</h1>
+    </div>
+    <div id="content">
+        <ul>
+            {{range .Topics}}
+                <li>{{.Name}}</li>
+            {{end}}
+        </ul>
+    </div>
+    <div id="footer">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque accusantium dolorum repellendus mollitia eius, officia eaque inventore ipsa eligendi iusto iste, cumque laudantium dolore doloremque facere culpa temporibus id provident!
+    </div>
 </body>
 </html>

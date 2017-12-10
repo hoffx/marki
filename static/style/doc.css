@@ -1,0 +1,6 @@
+@media all {
+  body #toc {
+    padding: 5em;
+    border: solid 1px black;
+  }
+}
