@@ -12,6 +12,7 @@ const DefaultRevision Revision = "master"
 var (
 	ErrNoSuchRevision = errors.New("no such revision")
 	ErrNoSuchLocale   = errors.New("no such locale")
+	ErrNoSuchSubtopic = errors.New("no such subtopic")
 )
 
 type Storage interface {
@@ -36,4 +37,12 @@ type Topic interface {
 
 	// Subtopics returns the subtopics of the topic
 	Subtopics() []Topic // subtopics
+}
+
+// PathTopic is a Topic that can be queried by a path
+type PathTopic interface {
+	Topic
+
+	// Subtopic returns a subtopic in a given path
+	Subtopic(path string) (Topic, error)
 }
