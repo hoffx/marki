@@ -25,7 +25,7 @@ func (u *UI) GenerateTOC(topic storage.Topic, basepath string) (toc *TOC) {
 		toc.Subtopics = make([]TOC, len(st))
 	}
 	for i := range st {
-		toc.Subtopics[i] = *u.GenerateTOC(st[i], basepath+"/"+topic.ID())
+		toc.Subtopics[i] = *u.GenerateTOC(st[i], basepath+"/"+st[i].ID())
 	}
 	return
 }
