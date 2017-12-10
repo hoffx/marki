@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/go-macaron/i18n"
 	"github.com/hoffx/marki/routes"
 	"github.com/urfave/cli"
 	macaron "gopkg.in/macaron.v1"
@@ -19,7 +20,9 @@ func runWeb(ctx *cli.Context) {
 	m.Use(macaron.Static("static", macaron.StaticOptions{
 		SkipLogging: true,
 	}))
-	//m.Use(i18n.I18n())
+	m.Use(i18n.I18n(i18n.Options{
+		Directory: "locales",
+	}))
 	m.Use(macaron.Renderer(macaron.RenderOptions{
 		Directory: "templates",
 	}))
