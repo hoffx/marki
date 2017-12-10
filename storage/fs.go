@@ -57,7 +57,7 @@ func (t *fsTopic) Name(locale string) (string, error) {
 
 func (t *fsTopic) Data(locale string) (io.Reader, error) {
 	r, err := os.Open(path.Join(t.path, locale+".md"))
-	if err == os.ErrNotExist {
+	if os.IsNotExist(err) {
 		return nil, ErrNoSuchLocale
 	}
 	if err != nil {
@@ -82,6 +82,23 @@ func (t *fsTopic) Subtopics() (ts []Topic) {
 	return
 }
 
+func (t *fsTopic) Subtopic(p string) (Topic, error) {
+	s, err := os.Stat(path.Join(t.path, p))
+	if os.IsNotExist(err) {
+		return nil, ErrNoSuchSubtopic
+	}
+	if err != nil {
+		panic(err)
+	}
+	if !s.IsDir() {
+		return nil, ErrNoSuchSubtopic
+	}
+	return &fsTopic{
+		path: path.Join(t.path, p),
+	}, nil
+}
+
+// NewFSStorage return an implementation of storage that uses a directory in the filesystem
 func NewFSStorage(path string) Storage {
 	return &fsStorage{
 		path: path,
