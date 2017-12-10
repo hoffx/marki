@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"github.com/go-macaron/i18n"
+	"github.com/hoffx/marki/config"
+	"github.com/hoffx/marki/db"
 	"github.com/hoffx/marki/middleware"
 	"github.com/hoffx/marki/routes"
 	"github.com/urfave/cli"
@@ -15,6 +17,9 @@ var Web = cli.Command{
 }
 
 func runWeb(ctx *cli.Context) {
+	config.Load(ctx.GlobalString("config"))
+	db.Open()
+
 	m := macaron.New()
 	m.Use(macaron.Logger())
 	m.Use(macaron.Recovery())
