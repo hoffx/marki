@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"strings"
@@ -39,7 +38,6 @@ func Doc(ctx *macaron.Context, log *log.Logger, ui *ui.UI) {
 		}
 	}
 	toc := ui.GenerateTOC(t, ctx.Req.URL.Path)
-	fmt.Printf("%+v\n", toc)
 	ctx.Data["Toc"] = toc
 	ctx.Data["Name"] = toc.Name
 	data, _ := t.Data(toc.Lang)
