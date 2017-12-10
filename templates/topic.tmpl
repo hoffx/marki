@@ -1,0 +1,8 @@
+<a href={{.Link}} ><li>{{.Name}}</li></a>
+{{if .Subtopics}}
+<li><ul>
+    {{range .Subtopics}}
+        {{template "topic" .Subtopic}}
+    {{end}}
+</ul></li>
+{{end}}
