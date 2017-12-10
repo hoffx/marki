@@ -17,4 +17,4 @@
 *.code-workspace
 debug
 .vscode
-.DS_Store
+*.DS_Store
