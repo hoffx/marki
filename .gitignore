@@ -25,4 +25,4 @@ config.ini
 # exclude third-party extensions
 static/extensions/*/*.js
 static/extensions/*/*.css
-
+*.min.js
